@@ -1,6 +1,8 @@
 # NFT Analytics Dashboard
 
-**_Abstract_— The NFT Analytics Dashboard is a web application that provides real-time insights into the performance of a fake NFT (Non-Fungible Token) on the Ethereum blockchain. The dashboard displays key metrics such as total sales and views, as well as charts and graphs that show the sales and views over time, sales by country, and top buyers. The dashboard is built using Flask and Chart.js, and retrieves data from a simulated API endpoint. It is designed to be easily customizable and extendable to work with any NFT on the Ethereum blockchain. The NFT Analytics Dashboard can help NFT creators and sellers track the performance of their assets and make data-driven decisions to optimize their sales and marketing strategies.**
+**_Abstract_— The NFT Analytics Dashboard is a web application that provides real-time insights into the performance of a fake NFT (Non-Fungible Token) on the Ethereum blockchain. The dashboard displays key metrics such as total sales and views, as well as charts and graphs that show the sales and views over time, sales by country, and top buyers. The dashboard is built using Flask and Chart.js, and retrieves data from a simulated API endpoint. It is designed to be easily customizable and extendable to work with any NFT on the Ethereum blockchain. The NFT Analytics Dashboard can help NFT creators and sellers track the performance of their assets and make data-driven decisions to optimize their sales and marketing strategies.
+
+**<img width="960" alt="Screenshot 2023-05-12 202830" src="https://github.com/kheshore/NFT-Analytics/assets/43311731/70f475eb-c107-4f51-b541-ab42f03cd1d8">
 
 _ **Keywords— Python, Django, Flask, web3, API, opensea, NFT, ETH.** _
 
