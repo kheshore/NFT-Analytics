@@ -82,5 +82,3 @@ Overall, there are many directions you can take your project in the future. Keep
 5. C. H. Choi, H. Kim, and D. S. Park, _"Design and Implementation of NFT Analytics Dashboard for Blockchain-based Games,"_ in 2021 IEEE International Conference on Blockchain (Blockchain), Taipei, Taiwan, 2021, pp. 1-6, doi: 10.1109/Blockchain53668.2021.9510529.
 6. G. J. Kim, J. H. Kim, and S. J. Lee, _"Real-time Monitoring of NFT Transactions Using an Analytics Dashboard,"_ in 2021 IEEE International Conference on Big Data and Analytics (ICBDA), Daegu, Korea (South), 2021, pp. 1-6, doi: 10.1109/ICBDA52964.2021.9423064.
 7. S. Park, S. Lee, and Y. Kim, _"NFT Analytics Dashboard for Fine Art,"_ in 2021 IEEE International Conference on Intelligent Systems and Applications (ISA), Seoul, Korea (South), 2021, pp. 1-6, doi: 10.1109/ISA54210.2021.9482017.
-
-XXX-X-XXXX-XXXX-X/XX/$XX.00 ©20XX IEEE
