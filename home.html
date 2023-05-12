@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NFT Analytics Dashboard</title>
+	<style type="text/css">
+		body {
+            text-align: center;
+            background-image: url('https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg');
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+		header {
+			background-color: #040214;
+			color: #fff;
+			padding: 16px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 9999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+        }
+		.box-container {
+			margin: 120px auto 0;
+			max-width: 700px;
+			padding: 20px;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+		.container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #040214;
+			color: #fff;
+			padding: 0;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+		.container img {
+			border-radius: 50%;
+			height: 30px;
+			margin-right: 10px;
+		}
+		.container a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #555;
+			margin-right: 10px;
+		}
+		.container a:hover {
+			background-color: #777;
+		}
+		.bcontainer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #040214;
+			color: #fff;
+			padding: 24px;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+		}
+		.bcontainer img {
+			border-radius: 50%;
+			height: 30px;
+			margin-right: 10px;
+		}
+		.bcontainer a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #555;
+			margin-right: 10px;
+		}
+		.bcontainer a:hover {
+			background-color: #777;
+		}
+		h1 {
+            text-align: center;
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+		.chart-container {
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 14px;
+		}
+		.chart {
+            text-align: center;
+			width: 300px;
+			height: 300px;
+			margin-right: 20px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px #ddd;
+			padding: 10px;
+		}
+		.chart h2 {
+            text-align: center;
+			font-size: 16px;
+			margin-top: 0px;
+			margin-bottom: 10px;
+		}
+		.total-sales, .total-views {
+            text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.total-sales {
+			color: #00c853;
+		}
+		.total-views {
+			color: #039be5;
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Get the NFT data from the API
+			$.getJSON("/api/nft_data", function(data) {
+				// Update the total sales and views
+				$(".total-sales").text("Total Sales: " + data.total_sales);
+				$(".total-views").text("Total Views: " + data.total_views);
+                $(".peak").text("Current Peak NFT: " + data.peak);
+				// Create the sales chart
+				var salesChart = new Chart($("#sales-chart"), {
+					type: "line",
+					data: {
+						labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+						datasets: [{
+							label: "Sales",
+							data: data.sales,
+							borderColor: "#00c853",
+							backgroundColor: "rgba(0, 200, 83, 0.2)"
+						}]
+					},
+					options: {
+						legend: {
+							display: false
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});
+
+				// Create the views chart
+				var viewsChart = new Chart($("#views-chart"), {
+					type: "bar",
+					data: {
+						labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+						datasets: [{
+							label: "Views",
+							data: data.views,
+							backgroundColor: "#039be5"
+						}]
+					},
+					options: {
+						legend: {
+							display: false
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container" style="display: flex; justify-content: space-between;">
+		<div>
+		<img src="https://via.placeholder.com/30" alt="Profile Pic">
+		<p>&nbsp;&nbsp;Logged In As {{username}}</p>
+		</div>
+		<div>
+			<h1>NFT Analysis</h1>
+			<h5>&nbsp by Hema</h5>
+		</div>
+		<div>
+		  <a href="{{ url_for('logout') }}">Logout</a>
+		</div>
+	  </div>
+	<div class="box-container">
+    <div class="peak"></div>
+    <br>
+	<div class="total-sales"></div>
+<div class="total-views"></div>
+<div class="chart-container">
+	<div class="chart">
+		<h2>Sales</h2>
+		<canvas id="sales-chart"></canvas>
+	</div>
+	<div class="chart">
+		<h2>Views</h2>
+		<canvas id="views-chart"></canvas>
+	</div>
+	</div>
+	<div class="bcontainer" style="display: flex; justify-content: space-between;">
+		<div>
+			<br>
+		</div>
+		<div>
+			<a href="{{'https://www.coinbase.com/how-to-buy/erc20'}}">Buy</a>
+			<a href="{{'https://www.coinbase.com/how-to-buy/erc20'}}">Sale</a>
+			<a href="{{'https://www.coinbase.com/how-to-buy/erc20'}}">Account</a>
+		</div>
+		<div>
+			<br>
+		</div>
+	  </div>	  
+</div>
+</body>
+</html>
